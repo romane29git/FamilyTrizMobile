@@ -1,2 +1,2 @@
 // Common colors
-export const colors = { headerBackground: "#f4511e", headerTint: "#fff" };
+export const colors = { headerBackground: "#AC6DF4", headerTint: "#fff" };
