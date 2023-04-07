@@ -1,14 +1,22 @@
-import React from "react";
+import {React, useState, useEffect} from "react";
 import { Text, View, Button, Dimensions, StyleSheet } from "react-native";
 import { BarChart } from "react-native-chart-kit";
 import styles from "../theme/styles";
+import familyService from "../api/familyService";
 
 const HomeScreen = ({ navigation }) => {
+
+  const [families, setFamilies] = useState([]);
+
+  useEffect(() => {
+    setFamilies(familyService.fetchFamilies());
+  }, []);
+
   const data = {
     labels: ["Rouge", "Orange", "Jaune", "Vert", "Bleu"],
     datasets: [
       {
-        data: [343, 412, 630, 625, 591],
+        data: [343, 343, 434, 434, 243],
         colors: [
           (opacity = 1) => `#EE2C03`,
           (opacity = 1) => `#FA8807`,
