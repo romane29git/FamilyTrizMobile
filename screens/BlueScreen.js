@@ -8,10 +8,10 @@ const people = [
 ];
 
 const PersonItem = ({ person }) => (
-  <Text style={styles.row}>
-    {person.firstName + " " + person.lastName + " - Promo " + person.promo}
-  </Text>
+  <Text>{person.firstName + " " + person.lastName}</Text>
 );
+
+const PersonPromo = ({ person }) => <Text>{"Promo " + person.promo}</Text>;
 
 const BlueScreen = () => {
   return (
@@ -19,13 +19,22 @@ const BlueScreen = () => {
       <View style={styles.box}>
         <Text style={styles.points}> 387 POINTS</Text>
       </View>
-      <FlatList
-        data={people}
-        renderItem={({ item }) => {
-          return <PersonItem person={item}></PersonItem>;
-        }}
-        keyExtractor={(item) => item.id.toString()}
-      ></FlatList>
+      <View style={styles.row}>
+        <FlatList
+          data={people}
+          renderItem={({ item }) => {
+            return <PersonItem person={item}></PersonItem>;
+          }}
+          keyExtractor={(item) => item.id.toString()}
+        ></FlatList>
+        <FlatList
+          data={people}
+          renderItem={({ item }) => {
+            return <PersonPromo person={item}></PersonPromo>;
+          }}
+          keyExtractor={(item) => item.id.toString()}
+        ></FlatList>
+      </View>
     </View>
   );
 };
@@ -46,7 +55,12 @@ const styles = StyleSheet.create({
   points: {
     fontSize: 30,
     fontFamily: "monospace",
-    textAlignVertical: "center", //marche pas
     textAlign: "center",
+  },
+  row: {
+    fontSize: 16,
+    padding: 10,
+    marginLeft: "10%",
+    flexDirection: "row",
   },
 });
