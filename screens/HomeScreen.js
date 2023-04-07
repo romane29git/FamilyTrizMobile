@@ -1,28 +1,27 @@
 import React from "react";
 import { Text, View, Button, Dimensions } from "react-native";
 import styles from "../theme/styles";
-import { BarChart } from "react-native-gifted-charts";
+import { BarChart } from "react-native-chart-kit";
 
 const HomeScreen = ({ navigation }) => {
-  const barData = [
-    { value: 250, label: "M" },
-    { value: 500, label: "T", frontColor: "#177AD5" },
-    { value: 745, label: "W", frontColor: "#177AD5" },
-    { value: 320, label: "T" },
-    { value: 600, label: "F", frontColor: "#177AD5" },
-    { value: 256, label: "S" },
-    { value: 300, label: "S" },
-  ];
+  const data = {
+    labels: ["Rouge", "Orange", "Jaune", "Vert", "Bleu"],
+    datasets: [
+      {
+        data: [20, 45, 28, 80, 99]
+      }
+    ]
+  };
   return (
     <View style={styles.container}>
       <BarChart
-        barWidth={22}
-        noOfSections={3}
-        barBorderRadius={4}
-        frontColor="lightgray"
-        data={barData}
-        yAxisThickness={0}
-        xAxisThickness={0}
+        data={data}
+        width={Dimensions.get("window").width - 16}
+        height={300}
+        chartConfig={{
+          color: (opacity =255) => `rgba(255,255,255, ${opacity})`,
+        }}
+        verticalLabelRotation={30}
       />
       <Text style={styles.text}>This is the home screen</Text>
       <Button
