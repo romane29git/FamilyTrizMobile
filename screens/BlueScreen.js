@@ -19,7 +19,7 @@ const BlueScreen = () => {
       <Image style={styles.logo} source={require("../assets/bleu.jpg")} />
       <View style={styles.box}>
         <Text style={styles.points}>387 POINTS</Text>
-      </View>
+      </View> 
       <Text style={styles.title}>La famille bleue</Text>
       <View style={styles.row}>
         <FlatList
@@ -28,7 +28,7 @@ const BlueScreen = () => {
             return <PersonItem person={item}></PersonItem>;
           }}
           keyExtractor={(item) => item.id.toString()}
-        ></FlatList>
+        ></FlatList> 
         <FlatList
           data={people}
           renderItem={({ item }) => {
@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
   logo: {
     width: 400,
     height: 250,
-    // position: "absolute",
   },
   title: {
     fontSize: 24,
