@@ -6,17 +6,26 @@ import familyService from "../api/familyService";
  
 const HomeScreen = ({ navigation }) => {
 
+  console.log("0");
+
   const [families, setFamilies] = useState([]);
 
+  async function fetchData() {
+    const fetchedFamilies = await familyService.fetchFamilies();
+    setFamilies(fetchedFamilies);
+  }
+
+  console.log(1);
+
   useEffect(() => {
-    async function fetchData() {
-      const fetchedFamilies = await familyService.fetchFamilies();
-      setFamilies(fetchedFamilies);
-    }
     fetchData();
-    console.log("coucou");
   }, []);
 
+  console.log(2);
+
+  if (families.length != 5) {
+    return <Text>Plip</Text>
+  }
 
   const data = {
     labels: [families[0].couleur, families[1].couleur, families[2].couleur, families[3].couleur, families[4].couleur],
@@ -33,6 +42,8 @@ const HomeScreen = ({ navigation }) => {
       }
     ]
   };
+  console.log(data)
+
   return (
     <View style={styles.container}>
       <Text style={homeStyles.title}>Bienvenue</Text>
