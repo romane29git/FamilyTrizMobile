@@ -20,6 +20,7 @@ const BlueScreen = () => {
       <View style={styles.box}>
         <Text style={styles.points}>387 POINTS</Text>
       </View>
+      <Text style={styles.title}>La famille bleue</Text>
       <View style={styles.row}>
         <FlatList
           data={people}
@@ -76,5 +77,9 @@ const styles = StyleSheet.create({
     width: 400,
     height: 250,
     // position: "absolute",
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
   },
 });
