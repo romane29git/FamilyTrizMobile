@@ -1,28 +1,34 @@
-import {React, useState, useEffect} from "react";
+import React, { useState, useEffect} from "react";
 import { Text, View, Button, Dimensions, StyleSheet } from "react-native";
 import { BarChart } from "react-native-chart-kit";
 import styles from "../theme/styles";
 import familyService from "../api/familyService";
-
+ 
 const HomeScreen = ({ navigation }) => {
 
   const [families, setFamilies] = useState([]);
 
   useEffect(() => {
-    setFamilies(familyService.fetchFamilies());
+    async function fetchData() {
+      const fetchedFamilies = await familyService.fetchFamilies();
+      setFamilies(fetchedFamilies);
+    }
+    fetchData();
+    console.log("coucou");
   }, []);
 
+
   const data = {
-    labels: ["Rouge", "Orange", "Jaune", "Vert", "Bleu"],
+    labels: [families[0].couleur, families[1].couleur, families[2].couleur, families[3].couleur, families[4].couleur],
     datasets: [
       {
-        data: [343, 343, 434, 434, 243],
+        data: [families[0].points, families[1].points, families[2].points, families[3].points, families[4].points],
         colors: [
-          (opacity = 1) => `#EE2C03`,
-          (opacity = 1) => `#FA8807`,
           (opacity = 1) => `#FAD507`,
+          (opacity = 1) => `#EE2C03`,
           (opacity = 1) => `#09C618`,
           (opacity = 1) => `#1E5AD3`,
+          (opacity = 1) => `#FA8807`,
         ]
       }
     ]
@@ -39,6 +45,7 @@ const HomeScreen = ({ navigation }) => {
           withCustomBarColorFromData={true}
           flatColor={true}
           fromZero={true}
+          fromNumber={500}
           chartConfig={{
             backgroundGradientFrom: "#ffffff",
             backgroundGradientFromOpacity: 0,
