@@ -18,7 +18,7 @@ const FamilyStackNavigator = () => {
       screenOptions={screenOptions}
     >
       <FamilyStack.Screen name="Familles" component={FamilyScreen} />
-      <FamilyStack.Screen name="Blue" component={BlueScreen} />
+      <FamilyStack.Screen name="Famille bleue" component={BlueScreen} />
       <FamilyStack.Screen name="Green" component={GreenScreen} />
       <FamilyStack.Screen name="Yellow" component={YellowScreen} />
       <FamilyStack.Screen name="Red" component={RedScreen} />

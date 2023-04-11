@@ -7,7 +7,7 @@ const FamilyScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Text
         style={[styles.box, styles.blue]}
-        onPress={() => navigation.navigate("Blue")}
+        onPress={() => navigation.navigate("Famille bleue")}
       >
         Bleu
       </Text>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, FlatList } from "react-native";
+import { Text, View, StyleSheet, FlatList, Image } from "react-native";
 // import styles from "../theme/styles";
 
 const people = [
@@ -16,8 +16,9 @@ const PersonPromo = ({ person }) => <Text>{"Promo " + person.promo}</Text>;
 const BlueScreen = () => {
   return (
     <View style={styles.container}>
+      <Image style={styles.logo} source={require("../assets/bleu.jpg")} />
       <View style={styles.box}>
-        <Text style={styles.points}> 387 POINTS</Text>
+        <Text style={styles.points}>387 POINTS</Text>
       </View>
       <View style={styles.row}>
         <FlatList
@@ -49,18 +50,31 @@ const styles = StyleSheet.create({
   },
   box: {
     width: "70%",
-    height: "15%",
-    backgroundColor: "#93E2FA",
+    // backgroundColor: "#93E2FA",
   },
   points: {
     fontSize: 30,
     fontFamily: "monospace",
     textAlign: "center",
+    position: "absolute",
+    top: -80,
+    backgroundColor: "#11B6FE",
+    marginHorizontal: 45,
+    textAlign: "center",
+    color: "white",
+    fontWeight: "300",
+    borderRadius: 20,
+    // paddingHorizontal: 5, à voir ça marche pas
   },
   row: {
     fontSize: 16,
     padding: 10,
     marginLeft: "10%",
     flexDirection: "row",
+  },
+  logo: {
+    width: 400,
+    height: 250,
+    // position: "absolute",
   },
 });
