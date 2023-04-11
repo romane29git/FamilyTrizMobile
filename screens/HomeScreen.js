@@ -6,8 +6,6 @@ import familyService from "../api/familyService";
  
 const HomeScreen = ({ navigation }) => {
 
-  console.log("0");
-
   const [families, setFamilies] = useState([]);
 
   async function fetchData() {
@@ -15,23 +13,11 @@ const HomeScreen = ({ navigation }) => {
     setFamilies(fetchedFamilies);
   }
 
-  console.log(1);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  console.log(2);
-
-  if (families.length != 5) {
-    return <Text>Plip</Text>
-  }
-
-  const data = {
-    labels: [families[0].couleur, families[1].couleur, families[2].couleur, families[3].couleur, families[4].couleur],
+  let data = {
+    labels: ["Jaune", "Rouge", "Vert", "Bleu", "Orange"],
     datasets: [
       {
-        data: [families[0].points, families[1].points, families[2].points, families[3].points, families[4].points],
+        data: [0, 0, 0, 0, 0],
         colors: [
           (opacity = 1) => `#FAD507`,
           (opacity = 1) => `#EE2C03`,
@@ -42,7 +28,28 @@ const HomeScreen = ({ navigation }) => {
       }
     ]
   };
-  console.log(data)
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if(families.length == 5){
+    data = {
+      labels: [families[0].couleur, families[1].couleur, families[2].couleur, families[3].couleur, families[4].couleur],
+      datasets: [
+        {
+          data: [families[0].points, families[1].points, families[2].points, families[3].points, families[4].points],
+          colors: [
+            (opacity = 1) => `#FAD507`,
+            (opacity = 1) => `#EE2C03`,
+            (opacity = 1) => `#09C618`,
+            (opacity = 1) => `#1E5AD3`,
+            (opacity = 1) => `#FA8807`,
+          ]
+        }
+      ]
+    };
+  }
 
   return (
     <View style={styles.container}>
