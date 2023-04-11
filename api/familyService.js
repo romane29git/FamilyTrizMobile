@@ -13,7 +13,7 @@ export class Family {
 class FamilyService {
   async fetchFamilies() {
     const families = await this.fetchFromApi(
-      `${rootEndpoint}`
+      rootEndpoint
     );
     return this.createFamilies(families);
   }
@@ -31,7 +31,7 @@ class FamilyService {
       const response = await fetch(query);
       // FIXME: JSON parse error when ingredient is not found
       const content = await response.json();
-      return content.families;
+      return content;
     } catch (e) {
       console.error(e);
     }
