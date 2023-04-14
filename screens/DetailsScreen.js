@@ -17,8 +17,8 @@ const DetailsScreen = ({ route }) => {
   const [family, setFamily] = useState(null);
 
   async function fetchData(familyId) {
-    const fetchedFamilies = await familyService.findFamilyById(familyId);
-    setFamily(fetchedFamilies);
+    const fetchedFamilies = await familyService.fetchFamilies();
+    setFamily(fetchedFamilies.find(f => f.id == familyId));
     setLoading(false);
   }
 
