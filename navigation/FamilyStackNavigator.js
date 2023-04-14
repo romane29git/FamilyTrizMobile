@@ -17,12 +17,12 @@ const FamilyStackNavigator = () => {
       initialRouteName="Home"
       screenOptions={screenOptions}
     >
-      <FamilyStack.Screen name="Familles" component={FamilyScreen} />
-      <FamilyStack.Screen name="Famille bleue" component={BlueScreen} />
-      <FamilyStack.Screen name="Green" component={GreenScreen} />
-      <FamilyStack.Screen name="Yellow" component={YellowScreen} />
-      <FamilyStack.Screen name="Red" component={RedScreen} />
-      <FamilyStack.Screen name="Orange" component={OrangeScreen} />
+      <FamilyStack.Screen name="listeFamille" component={FamilyScreen} options={{title:'Familles'}} />
+      <FamilyStack.Screen name="bleue" component={BlueScreen} />
+      <FamilyStack.Screen name="green" component={GreenScreen} />
+      <FamilyStack.Screen name="yellow" component={YellowScreen} />
+      <FamilyStack.Screen name="red" component={RedScreen} />
+      <FamilyStack.Screen name="orange" component={OrangeScreen} />
     </FamilyStack.Navigator>
   );
 };
