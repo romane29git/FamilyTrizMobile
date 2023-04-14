@@ -22,6 +22,7 @@ class FamilyService {
     const families = await this.fetchFromApi(
       `${rootEndpoint}/${id}`
     );
+
     return this.createFamily(families[0]);
   }
 

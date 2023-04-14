@@ -2,13 +2,13 @@ import React, {useState, useEffect} from "react";
 import { StyleSheet, Text, View, Image, FlatList } from "react-native";
 import familyService from "../api/familyService";
 
-const FamilyDescription = (color) => {
+const FamilyDescription = (Id) => {
 
     const [family, setFamily] = useState([]);
     
     async function fetchData() {
         const fetchedFamilies = await familyService.fetchFamilies();
-        setFamily(fetchedFamilies.find(f => f.couleur == color));
+        setFamily(fetchedFamilies.find(f => f.id == Id));
       }
 
     useEffect(() => {

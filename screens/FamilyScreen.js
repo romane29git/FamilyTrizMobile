@@ -1,37 +1,41 @@
 import React from "react";
 import { Text, View, StyleSheet, navigation } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+const vert={
+  color:'Vert'
+};
 
 const FamilyScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text
         style={[styles.box, styles.blue]}
-        onPress={() => navigation.navigate("bleue")}
+        onPress={() => navigation.navigate("bleue", {familyId:9})}
+        
       >
         Bleu
       </Text>
       <Text
         style={[styles.box, styles.green]}
-        onPress={() => navigation.navigate("green")}
+        onPress={() => navigation.navigate("green", {familyId:8})}
       >
         Vert
       </Text>
       <Text
         style={[styles.box, styles.yellow]}
-        onPress={() => navigation.navigate("yellow")}
+        onPress={() => navigation.navigate("yellow", {familyId:6})}
       >
         Jaune
       </Text>
       <Text
         style={[styles.box, styles.orange]}
-        onPress={() => navigation.navigate("orange")}
+        onPress={() => navigation.navigate("orange", {familyId:10})}
       >
         Orange
       </Text>
       <Text
         style={[styles.box, styles.red]}
-        onPress={() => navigation.navigate("red")}
+        onPress={() => navigation.navigate("red", {familyId:7})}
       >
         Rouge
       </Text>
