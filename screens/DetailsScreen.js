@@ -43,15 +43,25 @@ if (loading) {
 } else {
   return (
     <View style={styles.container}>
-      <Image style={styles.logo} source={require("../assets/bleu.jpg")} />
+      <Image style={styles.logo} 
+              source=
+              {
+              family.couleur=="Rouge" ? require("../assets/rouge.jpg") :
+              family.couleur=="Bleu" ? require("../assets/bleu.jpg") :
+              family.couleur=="Vert" ? require("../assets/vert.jpg") :
+              family.couleur=="Jaune" ? require("../assets/jaune.jpg") :
+              family.couleur=="Orange" ? require("../assets/orange.jpg") :
+              require("../assets/bleu.jpg")
+              }
+      />
       <View style={styles.box}>
         <Text style={[
                       styles.points, 
-                      family.couleur=="Rouge" ? styles.rouge : styles.points,
-                      family.couleur=="Bleu" ? styles.bleu : styles.points,
-                      family.couleur=="Jaune" ? styles.jaune : styles.points,
-                      family.couleur=="Vert" ? styles.vert : styles.points,
-                      family.couleur=="Orange" ? styles.orange : styles.points,
+                      family.couleur=="Rouge" ? styles.rouge :
+                      family.couleur=="Bleu" ? styles.bleu :
+                      family.couleur=="Jaune" ? styles.jaune :
+                      family.couleur=="Vert" ? styles.vert :
+                      family.couleur=="Orange" ? styles.orange : styles.points
                       ]}>{family.points} POINTS</Text>
       </View>
       <Text style={styles.title}>La famille {family.couleur}</Text>

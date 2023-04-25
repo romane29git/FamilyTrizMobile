@@ -18,11 +18,11 @@ const FamilyStackNavigator = () => {
         component={FamilyScreen}
         options={{ title: "Familles" }}
       />
-      <FamilyStack.Screen name="bleue" component={DetailsScreen}/>
-      <FamilyStack.Screen name="green" component={DetailsScreen} />
-      <FamilyStack.Screen name="yellow" component={DetailsScreen} />
-      <FamilyStack.Screen name="red" component={DetailsScreen} />
-      <FamilyStack.Screen name="orange" component={DetailsScreen} />
+      <FamilyStack.Screen name="Bleu" component={DetailsScreen}/>
+      <FamilyStack.Screen name="Vert" component={DetailsScreen} />
+      <FamilyStack.Screen name="Jaune" component={DetailsScreen} />
+      <FamilyStack.Screen name="Rouge" component={DetailsScreen} />
+      <FamilyStack.Screen name="Orange" component={DetailsScreen} />
     </FamilyStack.Navigator>
   );
 };
