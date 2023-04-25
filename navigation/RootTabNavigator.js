@@ -22,7 +22,7 @@ const RootTabNavigator = () => {
               iconName = focused ? "ios-podium" : "ios-podium-outline";
             } else if (route.name === "Familles") {
               iconName = focused ? "ios-people" : "ios-people-outline";
-            } else if(route.name === "Familles"){
+            } else if(route.name === "Eleves"){
               iconName = focused ? "ios-accessibility" : "ios-accessibility-outline";
             }
             // You can return any component that you like here!

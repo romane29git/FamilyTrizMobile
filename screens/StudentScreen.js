@@ -1,71 +1,70 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
-    Text,
-    View,
-    StyleSheet,
-    FlatList,
-    Image,
-    ActivityIndicator,
-  } from "react-native";
-import styles from "../theme/styles";
-import familyService from "../api/familyService";
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  Image,
+  ActivityIndicator,
+} from "react-native";
+import FamilyDescription from "../components/familyDescription";
+import { useState } from "react";
+import { useEffect } from "react";
+import studentService from "../api/studentService";
 
-const StudentScreen = ({ navigation }) => {
-  const [families, setFamilies] = useState([]);
-  const [family, setFamily] = useState(null);
+const StudentScreen = ({ route }) => {
+  const [loading, setLoading] = useState(true);
+  const [student, setStudent] = useState(null);
 
- 
   async function fetchData() {
-    const fetchedFamilies = await familyService.fetchFamilies();
-    setFamilies(fetchedFamilies);
+    const fetchedStudents = await studentService.fetchStudents();
+    setStudent(fetchedStudents);
+    setLoading(false);
   }
-
-  let data = {
-    labels: ["Jaune", "Rouge", "Vert", "Bleu", "Orange"],
-    datasets: [
-      {
-        data: [0, 0, 0, 0, 0],
-        colors: [
-          (opacity = 1) => `#FAD507`,
-          (opacity = 1) => `#EE2C03`,
-          (opacity = 1) => `#09C618`,
-          (opacity = 1) => `#1E5AD3`,
-          (opacity = 1) => `#FA8807`,
-        ],
-      },
-    ],
-  };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  
-
-  return (
-    <View style={stylesStudent.container}>
-      <Text style={stylesStudent.title}>La famille</Text>
-      <View style={stylesStudent.row}>
-        <FlatList
-          data={family.eleves}
-          renderItem={({ item }) => {
-            return <PersonItem person={item}></PersonItem>;
-          }}
-          keyExtractor={(item) => item.id.toString()}
-        ></FlatList>
-        <FlatList
-          data={family.eleves}
-          renderItem={({ item }) => {
-            return <PersonPromo person={item}></PersonPromo>;
-          }}
-          keyExtractor={(item) => item.id.toString()}
-        ></FlatList>
-      </View>
-    </View>
+  const PersonItem = ({ person }) => (
+    <Text>{person.prenom + " " + person.nom}</Text>
   );
+
+  const PersonPromo = ({ person }) => (
+    <Text>{"Promo " + person.promotion}</Text>
+  );
+
+  if (loading) {
+    return (
+      <View>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  } else {
+    return (
+      <View style={styles.container}>
+        <View style={styles.row}>
+          <FlatList
+            data={student}
+            renderItem={({ item }) => {
+              return <PersonItem person={item}></PersonItem>;
+            }}
+            keyExtractor={(item) => item.id.toString()}
+          ></FlatList>
+          <FlatList
+            data={student}
+            renderItem={({ item }) => {
+              return <PersonPromo person={item}></PersonPromo>;
+            }}
+            keyExtractor={(item) => item.id.toString()}
+          ></FlatList>
+        </View>
+      </View>
+    );
+  }
 };
 
-const stylesStudent = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     // justifyContent: "space-around", //vertical
@@ -81,12 +80,28 @@ const stylesStudent = StyleSheet.create({
     textAlign: "center",
     position: "absolute",
     top: -80,
-    backgroundColor: "#11B6FE",
     marginHorizontal: 45,
     textAlign: "center",
     color: "white",
     fontWeight: "300",
     borderRadius: 20,
+    padding: 5,
+    // paddingHorizontal: 5, à voir ça marche pas
+  },
+  rouge: {
+    backgroundColor: "#EE2C03",
+  },
+  bleu: {
+    backgroundColor: "#1E5AD3",
+  },
+  jaune: {
+    backgroundColor: "#FAD507",
+  },
+  vert: {
+    backgroundColor: "#09C618",
+  },
+  orange: {
+    backgroundColor: "#FA8807",
   },
   row: {
     fontSize: 16,
@@ -104,5 +119,4 @@ const stylesStudent = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-
 export default StudentScreen;

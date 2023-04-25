@@ -18,7 +18,7 @@ const DetailsScreen = ({ route }) => {
 
   async function fetchData(familyId) {
     const fetchedFamilies = await familyService.fetchFamilies();
-    setFamily(fetchedFamilies.find(f => f.id == familyId));
+    setFamily(fetchedFamilies.find((f) => f.id == familyId));
     setLoading(false);
   }
 
@@ -31,49 +31,54 @@ const DetailsScreen = ({ route }) => {
     <Text>{person.prenom + " " + person.nom}</Text>
   );
 
-  const PersonPromo = ({ person }) => <Text>{"Promo " + person.promotion}</Text>;
-
-
-if (loading) {
-  return (
-    <View>
-      <ActivityIndicator size="large" />
-    </View>
+  const PersonPromo = ({ person }) => (
+    <Text>{"Promo " + person.promotion}</Text>
   );
-} else {
-  return (
-    <View style={styles.container}>
-      <Image style={styles.logo} source={require("../assets/bleu.jpg")} />
-      <View style={styles.box}>
-        <Text style={[
-                      styles.points, 
-                      family.couleur=="Rouge" ? styles.rouge : styles.points,
-                      family.couleur=="Bleu" ? styles.bleu : styles.points,
-                      family.couleur=="Jaune" ? styles.jaune : styles.points,
-                      family.couleur=="Vert" ? styles.vert : styles.points,
-                      family.couleur=="Orange" ? styles.orange : styles.points,
-                      ]}>{family.points} POINTS</Text>
+
+  if (loading) {
+    return (
+      <View>
+        <ActivityIndicator size="large" />
       </View>
-      <Text style={styles.title}>La famille {family.couleur}</Text>
-      <View style={styles.row}>
-        <FlatList
-          data={family.eleves}
-          renderItem={({ item }) => {
-            return <PersonItem person={item}></PersonItem>;
-          }}
-          keyExtractor={(item) => item.id.toString()}
-        ></FlatList>
-        <FlatList
-          data={family.eleves}
-          renderItem={({ item }) => {
-            return <PersonPromo person={item}></PersonPromo>;
-          }}
-          keyExtractor={(item) => item.id.toString()}
-        ></FlatList>
+    );
+  } else {
+    return (
+      <View style={styles.container}>
+        <Image style={styles.logo} source={require("../assets/bleu.jpg")} />
+        <View style={styles.box}>
+          <Text
+            style={[
+              styles.points,
+              family.couleur == "Rouge" ? styles.rouge : styles.points,
+              family.couleur == "Bleu" ? styles.bleu : styles.points,
+              family.couleur == "Jaune" ? styles.jaune : styles.points,
+              family.couleur == "Vert" ? styles.vert : styles.points,
+              family.couleur == "Orange" ? styles.orange : styles.points,
+            ]}
+          >
+            {family.points} POINTS
+          </Text>
+        </View>
+        <Text style={styles.title}>La famille {family.couleur}</Text>
+        <View style={styles.row}>
+          <FlatList
+            data={family.eleves}
+            renderItem={({ item }) => {
+              return <PersonItem person={item}></PersonItem>;
+            }}
+            keyExtractor={(item) => item.id.toString()}
+          ></FlatList>
+          <FlatList
+            data={family.eleves}
+            renderItem={({ item }) => {
+              return <PersonPromo person={item}></PersonPromo>;
+            }}
+            keyExtractor={(item) => item.id.toString()}
+          ></FlatList>
+        </View>
       </View>
-    </View>
-  );
-}
+    );
+  }
 };
 
 const styles = StyleSheet.create({
@@ -101,19 +106,19 @@ const styles = StyleSheet.create({
     // paddingHorizontal: 5, à voir ça marche pas
   },
   rouge: {
-    backgroundColor: '#EE2C03'
+    backgroundColor: "#EE2C03",
   },
   bleu: {
-    backgroundColor: '#1E5AD3'
+    backgroundColor: "#1E5AD3",
   },
   jaune: {
-    backgroundColor: '#FAD507'
+    backgroundColor: "#FAD507",
   },
   vert: {
-    backgroundColor: '#09C618'
+    backgroundColor: "#09C618",
   },
   orange: {
-    backgroundColor: '#FA8807'
+    backgroundColor: "#FA8807",
   },
   row: {
     fontSize: 16,
