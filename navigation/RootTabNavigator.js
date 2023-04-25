@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeStackNavigator from "./HomeStackNavigator";
 import FamilyStackNavigator from "./FamilyStackNavigator";
+import StudentStackNavigator from "./StudentStackNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,6 +22,8 @@ const RootTabNavigator = () => {
               iconName = focused ? "ios-podium" : "ios-podium-outline";
             } else if (route.name === "Familles") {
               iconName = focused ? "ios-people" : "ios-people-outline";
+            } else if(route.name === "Familles"){
+              iconName = focused ? "ios-accessibility" : "ios-accessibility-outline";
             }
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
@@ -33,6 +36,7 @@ const RootTabNavigator = () => {
       >
         <Tab.Screen name="Points" component={HomeStackNavigator} />
         <Tab.Screen name="Familles" component={FamilyStackNavigator} />
+        <Tab.Screen name="Elèves" component={StudentStackNavigator} />
       </Tab.Navigator>
     </NavigationContainer>
   );
