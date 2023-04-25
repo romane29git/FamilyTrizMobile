@@ -25,13 +25,14 @@ const DetailsScreen = ({ route }) => {
   useEffect(() => {
     const { familyId } = route.params;
     fetchData(familyId);
+    console.log(family)
   }, []);
 
   const PersonItem = ({ person }) => (
-    <Text>{person.firstName + " " + person.lastName}</Text>
+    <Text>{person.prenom + " " + person.nom}</Text>
   );
 
-  const PersonPromo = ({ person }) => <Text>{"Promo " + person.promo}</Text>;
+  const PersonPromo = ({ person }) => <Text>{"Promo " + person.promotion}</Text>;
 
 
 if (loading) {
@@ -110,4 +111,10 @@ const styles = StyleSheet.create({
   },
 });
 
+if (family.couleur == "Jaune")
+  styles.points.backgroundColor = 'yellow' 
+else if(family.couleur == "Rouge")
+  styles.points.backgroundColor = 'red'
+else if(family.couleur == "Vert")
+  styles.points.backgroundColor = 'green'
 export default DetailsScreen;
