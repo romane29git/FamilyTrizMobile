@@ -25,7 +25,6 @@ const DetailsScreen = ({ route }) => {
   useEffect(() => {
     const { familyId } = route.params;
     fetchData(familyId);
-    console.log(family)
   }, []);
 
   const PersonItem = ({ person }) => (
@@ -46,7 +45,14 @@ if (loading) {
     <View style={styles.container}>
       <Image style={styles.logo} source={require("../assets/bleu.jpg")} />
       <View style={styles.box}>
-        <Text style={styles.points}>{family.points} POINTS</Text>
+        <Text style={[
+                      styles.points, 
+                      family.couleur=="Rouge" ? styles.rouge : styles.points,
+                      family.couleur=="Bleu" ? styles.bleu : styles.points,
+                      family.couleur=="Jaune" ? styles.jaune : styles.points,
+                      family.couleur=="Vert" ? styles.vert : styles.points,
+                      family.couleur=="Orange" ? styles.orange : styles.points,
+                      ]}>{family.points} POINTS</Text>
       </View>
       <Text style={styles.title}>La famille {family.couleur}</Text>
       <View style={styles.row}>
@@ -86,13 +92,28 @@ const styles = StyleSheet.create({
     textAlign: "center",
     position: "absolute",
     top: -80,
-    backgroundColor: "#11B6FE",
     marginHorizontal: 45,
     textAlign: "center",
     color: "white",
     fontWeight: "300",
     borderRadius: 20,
+    padding: 5,
     // paddingHorizontal: 5, à voir ça marche pas
+  },
+  rouge: {
+    backgroundColor: '#EE2C03'
+  },
+  bleu: {
+    backgroundColor: '#1E5AD3'
+  },
+  jaune: {
+    backgroundColor: '#FAD507'
+  },
+  vert: {
+    backgroundColor: '#09C618'
+  },
+  orange: {
+    backgroundColor: '#FA8807'
   },
   row: {
     fontSize: 16,
@@ -110,11 +131,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-
-if (family.couleur == "Jaune")
-  styles.points.backgroundColor = 'yellow' 
-else if(family.couleur == "Rouge")
-  styles.points.backgroundColor = 'red'
-else if(family.couleur == "Vert")
-  styles.points.backgroundColor = 'green'
 export default DetailsScreen;
