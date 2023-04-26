@@ -47,7 +47,7 @@ const StudentScreen = ({ navigation }) => {
           onPress={() => navigation.navigate("Ajout d'un élève")}
           >
             <Text style={styles.buttonText}>+</Text>
-          </TouchableOpacity>
+        </TouchableOpacity>
         <View style={styles.row}>
           <FlatList
             data={students}
