@@ -1,6 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import StudentScreen from "../screens/StudentScreen";
+import StudentCreationScreen from "../screens/StudentCreationScreen";
 import { screenOptions } from "../theme/styles";
 
 // Screen stack for family tab
@@ -17,6 +18,7 @@ const StudentStackNavigator = () => {
         component={StudentScreen}
         options={{ title: "Eleves" }}
       />
+      <StudentStack.Screen name="Ajout d'un élève" component={StudentCreationScreen}/>
     </StudentStack.Navigator>
   );
 };

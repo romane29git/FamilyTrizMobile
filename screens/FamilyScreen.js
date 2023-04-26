@@ -1,17 +1,13 @@
 import React from "react";
-import { Text, View, StyleSheet, navigation } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-const vert={
-  color:'Vert'
-};
 
 const FamilyScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text
         style={[styles.box, styles.blue]}
-        onPress={() => navigation.navigate("Bleu", {familyId:9})}
-        
+        onPress={() => navigation.navigate("Bleu", {familyId:9})}    
       >
         Bleu
       </Text>

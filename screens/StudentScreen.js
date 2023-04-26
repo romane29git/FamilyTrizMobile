@@ -4,20 +4,19 @@ import {
   View,
   StyleSheet,
   FlatList,
-  Image,
+  TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
 import { useState } from "react";
 import { useEffect } from "react";
 import studentService from "../api/studentService";
 
-const StudentScreen = () => {
+const StudentScreen = ( navigation ) => {
   const [loading, setLoading] = useState(true);
   const [students, setStudents] = useState([]);
 
   async function fetchData() {
     const fetchedStudents = await studentService.fetchStudents();
-    console.log(fetchedStudents)
     setStudents(fetchedStudents);
     setLoading(false);
   }
@@ -43,6 +42,12 @@ const StudentScreen = () => {
   } else {
     return (
       <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Ajout d'un élève")}
+          >
+            <Text style={styles.buttonText}>+</Text>
+          </TouchableOpacity>
         <View style={styles.row}>
           <FlatList
             data={students}
@@ -118,5 +123,17 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
   },
+  button: {
+    backgroundColor: '#AC6DF4',
+    marginTop: 10,
+    borderRadius: 10,
+    paddingEnd: 20,
+    paddingStart: 20,
+    marginBottom: 20
+  },
+  buttonText: {
+    fontSize: 40,
+    color: 'white'
+  }
 });
 export default StudentScreen;

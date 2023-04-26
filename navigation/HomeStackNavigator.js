@@ -15,7 +15,6 @@ const HomeStackNavigator = () => {
         component={HomeScreen}
         options={{ title: "Accueil" }}
       />
-      <HomeStack.Screen name="Details" component={DetailsScreen} />
     </HomeStack.Navigator>
   );
 };
