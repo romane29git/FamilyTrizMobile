@@ -26,11 +26,25 @@ const StudentScreen = ({ navigation }) => {
   }, []);
 
   const PersonItem = ({ person }) => (
-    <Text>{person.prenom + " " + person.nom}</Text>
-  );
-
-  const PersonPromo = ({ person }) => (
-    <Text>{"Promo " + person.promotion}</Text>
+    <View>
+      <Text>{person.prenom + " " + person.nom}</Text>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate("Modification d'un élève", {
+              studentId: person.id,
+            });
+          }}
+        >
+          <Text>Edit</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text>Delete</Text>
+        </TouchableOpacity>
+      </View>
+      <Text>{"Promo " + person.promotion}</Text>
+    </View>
   );
 
   if (loading) {
@@ -53,13 +67,6 @@ const StudentScreen = ({ navigation }) => {
             data={students}
             renderItem={({ item }) => {
               return <PersonItem person={item}></PersonItem>;
-            }}
-            keyExtractor={(item) => item.id.toString()}
-          ></FlatList>
-          <FlatList
-            data={students}
-            renderItem={({ item }) => {
-              return <PersonPromo person={item}></PersonPromo>;
             }}
             keyExtractor={(item) => item.id.toString()}
           ></FlatList>
@@ -124,16 +131,16 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   button: {
-    backgroundColor: '#AC6DF4',
+    backgroundColor: "#AC6DF4",
     marginTop: 10,
     borderRadius: 10,
     paddingEnd: 20,
     paddingStart: 20,
-    marginBottom: 20
+    marginBottom: 20,
   },
   buttonText: {
     fontSize: 40,
-    color: 'white'
-  }
+    color: "white",
+  },
 });
 export default StudentScreen;
