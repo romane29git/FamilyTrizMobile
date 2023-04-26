@@ -30,7 +30,6 @@ const HomeScreen = ({ navigation }) => {
 
   useEffect(() => {
     fetchData();
-    console.log("coucou")
   }, []);
 
   if (families.length == 5) {

@@ -7,18 +7,18 @@ import {
   Image,
   ActivityIndicator,
 } from "react-native";
-import FamilyDescription from "../components/familyDescription";
 import { useState } from "react";
 import { useEffect } from "react";
 import studentService from "../api/studentService";
 
-const StudentScreen = ({ route }) => {
+const StudentScreen = () => {
   const [loading, setLoading] = useState(true);
-  const [student, setStudent] = useState(null);
+  const [students, setStudents] = useState([]);
 
   async function fetchData() {
     const fetchedStudents = await studentService.fetchStudents();
-    setStudent(fetchedStudents);
+    console.log(fetchedStudents)
+    setStudents(fetchedStudents);
     setLoading(false);
   }
 
@@ -45,14 +45,14 @@ const StudentScreen = ({ route }) => {
       <View style={styles.container}>
         <View style={styles.row}>
           <FlatList
-            data={student}
+            data={students}
             renderItem={({ item }) => {
               return <PersonItem person={item}></PersonItem>;
             }}
             keyExtractor={(item) => item.id.toString()}
           ></FlatList>
           <FlatList
-            data={student}
+            data={students}
             renderItem={({ item }) => {
               return <PersonPromo person={item}></PersonPromo>;
             }}

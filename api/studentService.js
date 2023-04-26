@@ -2,11 +2,15 @@ const rootEndpoint = "https://familytriz.azurewebsites.net/api/studentapi";
 
 // Model class for a student
 export class Student {
-  constructor(id, couleur, points, eleves) {
+  constructor(id, nom, prenom, promotion, parrainId, familleId, parrain, famille) {
     this.id = id;
-    this.couleur = couleur;
-    this.points = points;
-    this.eleves = eleves;
+    this.nom = nom;
+    this.prenom = prenom;
+    this.promotion = promotion;
+    this.parrainId = parrainId;
+    this.familleId = familleId;
+    this.parrain = parrain;
+    this.famille = famille;
   }
 }
 
@@ -42,16 +46,20 @@ class StudentService {
   createStudent(student) {
     return new Student(
       student.id,
-      student.couleur,
-      student.points,
-      student.eleves
+      student.nom,
+      student.prenom,
+      student.promotion,
+      student.parrainId,
+      student.familleId,
+      student.parrain,
+      student.famille
     );
   }
 
   // Create a student model object list from the array returned by API
   createStudents(students) {
     // Create a student object for each element in the array
-    return students.map((Student) => this.createstudent(student));
+    return students.map((student) => this.createStudent(student));
   }
 }
 

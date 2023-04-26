@@ -23,7 +23,7 @@ const RootTabNavigator = () => {
             } else if (route.name === "Familles") {
               iconName = focused ? "ios-people" : "ios-people-outline";
             } else if(route.name === "Eleves"){
-              iconName = focused ? "ios-accessibility" : "ios-accessibility-outline";
+              iconName = focused ? "ios-person" : "ios-person-outline";
             }
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
@@ -36,7 +36,7 @@ const RootTabNavigator = () => {
       >
         <Tab.Screen name="Points" component={HomeStackNavigator} />
         <Tab.Screen name="Familles" component={FamilyStackNavigator} />
-        <Tab.Screen name="Elèves" component={StudentStackNavigator} />
+        <Tab.Screen name="Eleves" component={StudentStackNavigator} />
       </Tab.Navigator>
     </NavigationContainer>
   );
