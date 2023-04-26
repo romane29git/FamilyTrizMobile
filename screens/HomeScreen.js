@@ -4,7 +4,7 @@ import { BarChart } from "react-native-chart-kit";
 import styles from "../theme/styles";
 import familyService from "../api/familyService";
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
   const [families, setFamilies] = useState([]);
 
   async function fetchData() {

@@ -22,7 +22,7 @@ const RootTabNavigator = () => {
               iconName = focused ? "ios-podium" : "ios-podium-outline";
             } else if (route.name === "Familles") {
               iconName = focused ? "ios-people" : "ios-people-outline";
-            } else if(route.name === "Eleves"){
+            } else if(route.name === "Élèves"){
               iconName = focused ? "ios-person" : "ios-person-outline";
             }
             // You can return any component that you like here!
@@ -36,7 +36,7 @@ const RootTabNavigator = () => {
       >
         <Tab.Screen name="Points" component={HomeStackNavigator} />
         <Tab.Screen name="Familles" component={FamilyStackNavigator} />
-        <Tab.Screen name="Eleves" component={StudentStackNavigator} />
+        <Tab.Screen name="Élèves" component={StudentStackNavigator} />
       </Tab.Navigator>
     </NavigationContainer>
   );

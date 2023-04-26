@@ -4,7 +4,7 @@ import StudentScreen from "../screens/StudentScreen";
 import StudentCreationScreen from "../screens/StudentCreationScreen";
 import { screenOptions } from "../theme/styles";
 
-// Screen stack for family tab
+// Screen stack for student tab
 const StudentStack = createNativeStackNavigator();
 
 const StudentStackNavigator = () => {
@@ -16,7 +16,7 @@ const StudentStackNavigator = () => {
       <StudentStack.Screen
         name="listeEleve"
         component={StudentScreen}
-        options={{ title: "Eleves" }}
+        options={{ title: "Élèves" }}
       />
       <StudentStack.Screen name="Ajout d'un élève" component={StudentCreationScreen}/>
     </StudentStack.Navigator>

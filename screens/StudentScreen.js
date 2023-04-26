@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import studentService from "../api/studentService";
 
-const StudentScreen = ( navigation ) => {
+const StudentScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
   const [students, setStudents] = useState([]);
 

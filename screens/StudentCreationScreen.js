@@ -3,13 +3,11 @@ import {
   Text,
   View,
   StyleSheet,
-  Image,
   ActivityIndicator,
 } from "react-native";
 import { useState } from "react";
 import { useEffect } from "react";
 import studentService from "../api/studentService";
-import Ionicons from "react-native-vector-icons/Ionicons";
 
 const StudentCreationScreen = () => {
     const [loading, setLoading] = useState(true);
@@ -36,11 +34,41 @@ const StudentCreationScreen = () => {
       return (
         <View style={styles.container}>
           <View style={styles.row}>
-            <Icon name="person-add" size={40}/>
           </View>
         </View>
       );
     }
   };
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: "space-around", //vertical
+      alignItems: "center", //horizontal
+    },
+    box: {
+      fontSize: 30,
+      fontFamily: "monospace",
+      textAlignVertical: "center",
+      width: "100%",
+      textAlign: "center",
+      height: "20%",
+    },
+    green: {
+      backgroundColor: "#79F98E",
+    },
+    blue: {
+      backgroundColor: "#93E2FA",
+    },
+    red: {
+      backgroundColor: "#FC3C3C",
+    },
+    yellow: {
+      backgroundColor: "#F9E74D",
+    },
+    orange: {
+      backgroundColor: "#F89628",
+    },
+  });
 
 export default StudentCreationScreen;
