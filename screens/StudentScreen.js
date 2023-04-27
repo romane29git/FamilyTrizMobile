@@ -10,6 +10,7 @@ import {
 import { useState } from "react";
 import { useEffect } from "react";
 import studentService from "../api/studentService";
+import studentList from "../components/studentList";
 
 const StudentScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
@@ -24,28 +25,6 @@ const StudentScreen = ({ navigation }) => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  const PersonItem = ({ person }) => (
-    <View>
-      <Text>{person.prenom + " " + person.nom}</Text>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            navigation.navigate("Modification d'un élève", {
-              studentId: person.id,
-            });
-          }}
-        >
-          <Text>Edit</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text>Delete</Text>
-        </TouchableOpacity>
-      </View>
-      <Text>{"Promo " + person.promotion}</Text>
-    </View>
-  );
 
   if (loading) {
     return (
@@ -63,13 +42,7 @@ const StudentScreen = ({ navigation }) => {
             <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
         <View style={styles.row}>
-          <FlatList
-            data={students}
-            renderItem={({ item }) => {
-              return <PersonItem person={item}></PersonItem>;
-            }}
-            keyExtractor={(item) => item.id.toString()}
-          ></FlatList>
+          <studentList students={students}/>
         </View>
       </View>
     );
