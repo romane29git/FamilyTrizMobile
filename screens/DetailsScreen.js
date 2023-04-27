@@ -7,7 +7,7 @@ import {
   Image,
   ActivityIndicator,
 } from "react-native";
-import FamilyDescription from "../components/familyDescription";
+import FamilyDescription from "../components/FamilyDescription";
 import familyService from "../api/familyService";
 import { useState } from "react";
 import { useEffect } from "react";

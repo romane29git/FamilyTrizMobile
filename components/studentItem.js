@@ -1,50 +1,48 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-const studentItem = ( stud ) => {
+const StudentItem = (stud) => {
+  const PersonItem = ({ person }) => (
+    <Text>{person.prenom + " " + person.nom}</Text>
+  );
 
-      const PersonItem = ({ person }) => (
-        <Text>{person.prenom + " " + person.nom}</Text>
-      );
-      
-      const PersonPromo = ({ person }) => <Text>{"Promo " + person.promotion}</Text>;
-      
-    return (
+  const PersonPromo = ({ person }) => (
+    <Text>{"Promo " + person.promotion}</Text>
+  );
+
+  return (
     <View style={styles.box}>
-        <View style={styles.row}>
-            <View style={styles.col}>
-                <PersonItem person={stud}></PersonItem>
-            </View>
-            <View style={styles.col}>
-                <Ionicons name="create" size={10}></Ionicons>
-                <Ionicons name="trash" size={10}></Ionicons>
-            </View>
+      <View style={styles.row}>
+        <View style={styles.col}>
+          <PersonItem person={stud}></PersonItem>
         </View>
-        <View style={styles.row}>
-            <View style={styles.col}>
-                <PersonPromo person={stud}></PersonPromo>
-            </View>
-            <View style={styles.col}>
-                
-            </View>
+        <View style={styles.col}>
+          <Ionicons name="create" size={10}></Ionicons>
+          <Ionicons name="trash" size={10}></Ionicons>
         </View>
+      </View>
+      <View style={styles.row}>
+        <View style={styles.col}>
+          <PersonPromo person={stud}></PersonPromo>
+        </View>
+        <View style={styles.col}></View>
+      </View>
     </View>
-    );
-      };
+  );
+};
 
-export default studentItem;
+export default StudentItem;
 
 const styles = StyleSheet.create({
-    box: {
-        borderBottomWidth: 2,
-        borderTopWidth: 2
-    },
-    row: {
-        flexDirection: "row"
-    },
-    col: {
-
-        flexDirection: "col"
-    }
-  });
+  box: {
+    borderBottomWidth: 2,
+    borderTopWidth: 2,
+  },
+  row: {
+    flexDirection: "row",
+  },
+  col: {
+    flexDirection: "column",
+  },
+});

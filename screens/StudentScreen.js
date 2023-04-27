@@ -10,7 +10,7 @@ import {
 import { useState } from "react";
 import { useEffect } from "react";
 import studentService from "../api/studentService";
-import studentList from "../components/studentList";
+import StudentList from "../components/StudentList";
 
 const StudentScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
@@ -38,11 +38,11 @@ const StudentScreen = ({ navigation }) => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate("Ajout d'un élève")}
-          >
-            <Text style={styles.buttonText}>+</Text>
+        >
+          <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
         <View style={styles.row}>
-          <studentList students={students}/>
+          <StudentList students={students} />
         </View>
       </View>
     );
