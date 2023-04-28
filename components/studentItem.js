@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-const StudentItem = (stud) => {
+const StudentItem = ({ stud }) => {
+
   const PersonItem = ({ person }) => (
-    <Text>{person.prenom + " " + person.nom}</Text>
+    <Text style={styles.noms}>{person.prenom + " " + person.nom}</Text>
   );
 
   const PersonPromo = ({ person }) => (
@@ -14,12 +15,12 @@ const StudentItem = (stud) => {
   return (
     <View style={styles.box}>
       <View style={styles.row}>
-        <View style={styles.col}>
+        <View>
           <PersonItem person={stud}></PersonItem>
         </View>
-        <View style={styles.col}>
-          <Ionicons name="create" size={10}></Ionicons>
-          <Ionicons name="trash" size={10}></Ionicons>
+        <View style={styles.end}>
+          <Ionicons name="create" size={20}></Ionicons>
+          <Ionicons name="trash" size={20}></Ionicons>
         </View>
       </View>
       <View style={styles.row}>
@@ -36,13 +37,17 @@ export default StudentItem;
 
 const styles = StyleSheet.create({
   box: {
-    borderBottomWidth: 2,
     borderTopWidth: 2,
+    width: 300
   },
   row: {
     flexDirection: "row",
   },
-  col: {
-    flexDirection: "column",
+  end: {
+    alignSelf: "flex-end"
   },
+  noms: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  }
 });

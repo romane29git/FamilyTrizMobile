@@ -19,6 +19,7 @@ const StudentScreen = ({ navigation }) => {
   async function fetchData() {
     const fetchedStudents = await studentService.fetchStudents();
     setStudents(fetchedStudents);
+    console.log(students);
     setLoading(false);
   }
 
@@ -35,12 +36,14 @@ const StudentScreen = ({ navigation }) => {
   } else {
     return (
       <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Ajout d'un élève")}
-        >
-          <Text style={styles.buttonText}>+</Text>
-        </TouchableOpacity>
+        <View style={styles.right}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("Ajout d'un élève")}
+          >
+            <Text style={styles.buttonText}>+</Text>
+          </TouchableOpacity>
+        </View>
         <View style={styles.row}>
           <StudentList students={students} />
         </View>
@@ -52,8 +55,8 @@ const StudentScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: 400
     // justifyContent: "space-around", //vertical
-    alignItems: "center", //horizontal
   },
   box: {
     width: "70%",
@@ -72,21 +75,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 5,
     // paddingHorizontal: 5, à voir ça marche pas
-  },
-  rouge: {
-    backgroundColor: "#EE2C03",
-  },
-  bleu: {
-    backgroundColor: "#1E5AD3",
-  },
-  jaune: {
-    backgroundColor: "#FAD507",
-  },
-  vert: {
-    backgroundColor: "#09C618",
-  },
-  orange: {
-    backgroundColor: "#FA8807",
   },
   row: {
     fontSize: 16,
@@ -110,10 +98,14 @@ const styles = StyleSheet.create({
     paddingEnd: 20,
     paddingStart: 20,
     marginBottom: 20,
+    width: 60,
   },
   buttonText: {
     fontSize: 40,
     color: "white",
   },
+  right: {
+    alignSelf: 'flex-end',
+  }
 });
 export default StudentScreen;

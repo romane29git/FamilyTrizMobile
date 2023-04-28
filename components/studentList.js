@@ -4,23 +4,21 @@ import StudentItem from "./StudentItem";
 
 const StudentList = ({ students }) => {
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={students}
-        renderItem={({ item }) => {
-          return <StudentItem stud={item}></StudentItem>;
-        }}
-        keyExtractor={(item) => item.id.toString()}
-      ></FlatList>
-    </View>
+    <FlatList
+      style={styles.liste}
+      data={students}
+      renderItem={({ item }) => {
+        return <StudentItem stud={item}></StudentItem>;
+      }}
+      keyExtractor={(item) => item.id.toString()}
+    ></FlatList>
   );
 };
 
 export default StudentList;
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    justifyContent: "center",
+  liste: {
+    height: 600
   },
 });
