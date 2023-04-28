@@ -36,7 +36,7 @@ const DetailsScreen = ({ route }) => {
 
   if (loading) {
     return (
-      <View>
+      <View style={styles.spinnerContainer}>
         <ActivityIndicator size="large" />
       </View>
     );
@@ -155,5 +155,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
   },
+  spinnerContainer: {
+    flex: 1,
+    justifyContent: "center",
+  }
 });
 export default DetailsScreen;

@@ -19,7 +19,6 @@ const StudentScreen = ({ navigation }) => {
   async function fetchData() {
     const fetchedStudents = await studentService.fetchStudents();
     setStudents(fetchedStudents);
-    console.log(students);
     setLoading(false);
   }
 
@@ -29,7 +28,7 @@ const StudentScreen = ({ navigation }) => {
 
   if (loading) {
     return (
-      <View>
+      <View style={styles.spinnerContainer}>
         <ActivityIndicator size="large" />
       </View>
     );
@@ -45,7 +44,7 @@ const StudentScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <StudentList students={students} />
+          <StudentList students={students} navigation={navigation}/>
         </View>
       </View>
     );
@@ -106,6 +105,10 @@ const styles = StyleSheet.create({
   },
   right: {
     alignSelf: 'flex-end',
-  }
+  },
+  spinnerContainer: {
+    flex: 1,
+    justifyContent: "center",
+  },
 });
 export default StudentScreen;

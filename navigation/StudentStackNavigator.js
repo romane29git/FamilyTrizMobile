@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import StudentScreen from "../screens/StudentScreen";
 import StudentCreationScreen from "../screens/StudentCreationScreen";
 import StudentUpdateScreen from "../screens/StudentUpdateScreen";
+import StudentItem from "../components/StudentItem";
 import { screenOptions } from "../theme/styles";
 
 // Screen stack for student tab

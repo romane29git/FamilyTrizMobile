@@ -10,10 +10,11 @@ import {
 import { useState } from "react";
 import { useEffect } from "react";
 import familyService from "../api/familyService";
+import studentService from "../api/studentService";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Picker } from "@react-native-picker/picker";
 
-const StudentCreationScreen = ({navigation}) => {
+const StudentCreationScreen = ({ navigation }) => {
     const [loading, setLoading] = useState(true);
     const [lastName, setLastName] = useState("");
     const [firstName, setFirstName] = useState("");
@@ -46,35 +47,20 @@ const StudentCreationScreen = ({navigation}) => {
       <Picker.Item key={item.id} label={item.couleur} value={item} />
     ));
 
-    const handleAddStudent = async () => {
-      fetch("https://familytriz.azurewebsites.net/api/StudentApi", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nom: lastName,
-          prenom: firstName,
-          promotion: promotion,
-          familleId: family.id,
-          parrainId: parrainId,
-          famille: family,
-          parrain: godFather
-        }),
-      })
-      .then((response) => response.json())
-      .catch((error) => {
-        // handle error from API here
-        console.error("Error sending data:", error);
-      });
-      navigation.replace('listeEleve');
-    };
+    const addStudent = async () => {
+      try{
+        await studentService.handleAddStudent(lastName, firstName, promotion, family, parrainId, godFather);
+        navigation.replace('listeEleve');
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
   
   
     if (loading) {
       return (
-        <View>
+        <View style={styles.spinnerContainer}>
           <ActivityIndicator size="large" />
         </View>
       );
@@ -126,7 +112,7 @@ const StudentCreationScreen = ({navigation}) => {
           </Picker>
           <TouchableOpacity
             style={styles.button}
-            onPress={handleAddStudent}
+            onPress={addStudent}
           >
             <Text style={styles.buttonText}>Ajouter l'élève</Text>
           </TouchableOpacity>
@@ -175,6 +161,10 @@ const StudentCreationScreen = ({navigation}) => {
       borderRadius: 10,
       padding: 20
     },
+    spinnerContainer: {
+      flex: 1,
+      justifyContent: "center",
+    }
   });
 
 export default StudentCreationScreen;

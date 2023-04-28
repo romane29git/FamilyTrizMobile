@@ -30,6 +30,71 @@ class StudentService {
     return this.createStudent(students[0]);
   }
 
+  async handleAddStudent(lastName, firstName, promotion, family, parrainId, godFather) {
+    fetch("https://familytriz.azurewebsites.net/api/StudentApi", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nom: lastName,
+        prenom: firstName,
+        promotion: promotion,
+        familleId: family.id,
+        parrainId: parrainId,
+        famille: family,
+        parrain: godFather
+      }),
+    })
+    .then((response) => response.json())
+    .catch((error) => {
+      // handle error from API here
+      console.error("Error sending data:", error);
+    });
+  };
+
+  async handleUpdateStudent(studentId, lastName, firstName, promotion, family, parrainId, godFather) {
+    fetch(`https://familytriz.azurewebsites.net/api/StudentApi:${studentId}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: studentId,
+        nom: lastName,
+        prenom: firstName,
+        promotion: promotion,
+        familleId: family.id,
+        parrainId: parrainId,
+        famille: family,
+        parrain: godFather
+      }),
+    })
+    .then((response) => response.json())
+    .catch((error) => {
+      // handle error from API here
+      console.error("Error sending data:", error);
+    });
+  };
+
+  async handleDeleteStudent(studentId) {
+    fetch(`https://familytriz.azurewebsites.net/api/StudentApi/${studentId}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => response.json())
+    .catch((error) => {
+      // handle error from API here
+      console.error("Error deleting data:", error);
+    });
+  };
+  
+
   async fetchFromApi(query) {
     console.log(`Fetching API with query ${query}`);
     try {
