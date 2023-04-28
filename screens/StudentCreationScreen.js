@@ -50,6 +50,7 @@ const StudentCreationScreen = ({ navigation }) => {
     const addStudent = async () => {
       try{
         await studentService.handleAddStudent(lastName, firstName, promotion, family, parrainId, godFather);
+        navigation.pop();
         navigation.replace('listeEleve');
       }
       catch (e) {
@@ -105,7 +106,10 @@ const StudentCreationScreen = ({ navigation }) => {
           <Picker 
             selectedValue={godFather}
             style={styles.text}
-            onValueChange={(itemValue, itemIndex) => setGodFather(itemValue) && setParrainId(itemValue.id)}
+            onValueChange={(itemValue, itemIndex) => {
+              setGodFather(itemValue);
+              setParrainId(itemValue.id);
+            }}
           >
             <Picker.Item label="Sélectionnez un parrain" enabled={false} value={null} />
             {studentsPicker}

@@ -6,31 +6,31 @@ const FamilyScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Text
         style={[styles.box, styles.blue]}
-        onPress={() => navigation.navigate("Bleu", {familyId:9})}    
+        onPress={() => navigation.navigate("Bleu", {familyId:4})}    
       >
         Bleu
       </Text>
       <Text
         style={[styles.box, styles.green]}
-        onPress={() => navigation.navigate("Vert", {familyId:8})}
+        onPress={() => navigation.navigate("Vert", {familyId:3})}
       >
         Vert
       </Text>
       <Text
         style={[styles.box, styles.yellow]}
-        onPress={() => navigation.navigate("Jaune", {familyId:6})}
+        onPress={() => navigation.navigate("Jaune", {familyId:1})}
       >
         Jaune
       </Text>
       <Text
         style={[styles.box, styles.orange]}
-        onPress={() => navigation.navigate("Orange", {familyId:10})}
+        onPress={() => navigation.navigate("Orange", {familyId:5})}
       >
         Orange
       </Text>
       <Text
         style={[styles.box, styles.red]}
-        onPress={() => navigation.navigate("Rouge", {familyId:7})}
+        onPress={() => navigation.navigate("Rouge", {familyId:2})}
       >
         Rouge
       </Text>

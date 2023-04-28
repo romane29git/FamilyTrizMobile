@@ -53,7 +53,7 @@ const StudentUpdateScreen = ({ navigation, route }) => {
 
     const updateStudent = async () => {
       try{
-        await studentService.handleUpdateStudent(student.id, lastName, firstName, promotion, family, parrainId, godFather);
+        await studentService.handleUpdateStudent(student.id, lastName, firstName, promotion, family, parrainId);
         navigation.replace('listeEleve');
       }
       catch (e) {

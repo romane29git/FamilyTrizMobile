@@ -56,16 +56,16 @@ const StudentItem = ({ stud, navigation }) => {
             <Ionicons 
               name="ellipse"
               size={25}
-              color={stud.familleId == 7
-              ? 'red'
-              : stud.familleId == 9
-              ? 'blue'
-              : stud.familleId == 8
-              ? 'green'
-              : stud.familleId == 6
-              ? 'yellow'
-              : stud.familleId == 10
-              ? 'orange'
+              color={stud.familleId == 2
+              ? "#FC3C3C"
+              : stud.familleId == 4
+              ? "#93E2FA"
+              : stud.familleId == 3
+              ? "#79F98E"
+              : stud.familleId == 1
+              ? "#F9E74D"
+              : stud.familleId == 5
+              ? "#F89628"
               : 'white'}
             >
             </Ionicons>
@@ -105,16 +105,16 @@ const StudentItem = ({ stud, navigation }) => {
             <Ionicons 
               name="ellipse"
               size={25}
-              color={stud.familleId == 7
-              ? 'red'
-              : stud.familleId == 9
-              ? 'blue'
-              : stud.familleId == 8
-              ? 'green'
-              : stud.familleId == 6
-              ? 'yellow'
-              : stud.familleId == 10
-              ? 'orange'
+              color={stud.familleId == 2
+              ? "#FC3C3C"
+              : stud.familleId == 4
+              ? "#93E2FA"
+              : stud.familleId == 3
+              ? "#79F98E"
+              : stud.familleId == 1
+              ? "#F9E74D"
+              : stud.familleId == 5
+              ? "#F89628"
               : 'white'}
             >
             </Ionicons>

@@ -30,7 +30,7 @@ class StudentService {
     return this.createStudent(students[0]);
   }
 
-  async handleAddStudent(lastName, firstName, promotion, family, parrainId, godFather) {
+  async handleAddStudent(lastName, firstName, promotion, family, parrainId) {
     fetch("https://familytriz.azurewebsites.net/api/StudentApi", {
       method: "POST",
       headers: {
@@ -41,10 +41,8 @@ class StudentService {
         nom: lastName,
         prenom: firstName,
         promotion: promotion,
-        familleId: family.id,
         parrainId: parrainId,
-        famille: family,
-        parrain: godFather
+        familleId: family.id
       }),
     })
     .then((response) => response.json())
@@ -54,7 +52,7 @@ class StudentService {
     });
   };
 
-  async handleUpdateStudent(studentId, lastName, firstName, promotion, family, parrainId, godFather) {
+  async handleUpdateStudent(studentId, lastName, firstName, promotion, family, parrainId) {
     fetch(`https://familytriz.azurewebsites.net/api/StudentApi:${studentId}`, {
       method: "PUT",
       headers: {
@@ -68,11 +66,9 @@ class StudentService {
         promotion: promotion,
         familleId: family.id,
         parrainId: parrainId,
-        famille: family,
-        parrain: godFather
       }),
     })
-    .then((response) => response.json())
+    .then((response) =>  response.json())
     .catch((error) => {
       // handle error from API here
       console.error("Error sending data:", error);
